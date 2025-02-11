@@ -1,2 +1,11 @@
-<h1>Mentoras#index</h1>
-<p>Find me in app/views/mentoras/index.html.erb</p>
+<h1>Mentoras</h1>
+
+   <%= link_to "criar mentora", new_mentora_path %>
+    
+<ul>
+  <% @mentoras.each do |mentora| %>
+    <li>
+      <%= link_to mentora.name, mentora %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,18 @@
+<h1> Nova mentora </h1>
+<%= form_with model: @mentora do |form| %>
+<div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+</div>
+<div>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+</div>
+<div>
+    <%= form.label :abilities %>
+    <%= form.textarea :abilities %>
+</div>
+<div>
+    <%= form.submit %>
+</div>
+<% end %>
