@@ -9,3 +9,77 @@
     </li>
   <% end %>
 </ul>
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          <%= image_tag "logo.svg", alt: "Mentora Logo", height: 40, class: "me-3" %>
+          <h1 class="display-4 text-primary mb-0">Encontre sua Mentora</h1>
+        </div>
+        <%= link_to new_mentora_path, class: "btn btn-primary" do %>
+          <i class="bi bi-plus-lg me-2"></i>Nova Mentora
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <% if @mentoras.any? %>
+      <% @mentoras.each do |mentora| %>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                <div class="flex-shrink-0">
+                  <div class="rounded-circle bg-primary bg-opacity-10 p-3">
+                    <i class="bi bi-person text-primary fs-4"></i>
+                  </div>
+                </div>
+                <div class="ms-3">
+                  <h5 class="card-title mb-1"><%= mentora.name %></h5>
+                  <p class="card-text text-muted mb-0"><%= mentora.email %></p>
+                </div>
+              </div>
+              
+              <% if mentora.abilities.present? %>
+                <div class="mb-3">
+                  <% mentora.abilities.split(",").each do |ability| %>
+                    <span class="badge bg-primary bg-opacity-10 text-primary me-2 mb-2">
+                      <%= ability.strip %>
+                    </span>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <%= link_to "Ver Perfil", mentora_path(mentora), class: "btn btn-outline-primary w-100" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-12">
+        <div class="text-center py-5">
+          <i class="bi bi-people display-1 text-muted mb-4"></i>
+          <h2 class="text-muted">Nenhuma mentora cadastrada ainda</h2>
+          <p class="text-muted mb-4">Seja a primeira a se cadastrar como mentora!</p>
+          <%= link_to new_mentora_path, class: "btn btn-primary" do %>
+            <i class="bi bi-plus-lg me-2"></i>Cadastrar-me como Mentora
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% content_for :head do %>
+  <style>
+    .card {
+      transition: transform 0.2s;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+<% end %>

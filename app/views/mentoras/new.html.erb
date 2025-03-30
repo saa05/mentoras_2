@@ -1,18 +1,36 @@
-<h1> Nova mentora </h1>
-<%= form_with model: @mentora do |form| %>
-<div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body p-4 p-lg-5">
+          <h1 class="display-5 text-primary text-center mb-4">Cadastro de Mentora</h1>
+          
+          <%= form_with(model: @mentora, local: true, class: "needs-validation") do |f| %>
+            <div class="mb-4">
+              <%= f.label :name, "Nome Completo", class: "form-label" %>
+              <%= f.text_field :name, class: "form-control form-control-lg", placeholder: "Digite seu nome completo", required: true %>
+            </div>
+
+            <div class="mb-4">
+              <%= f.label :email, "E-mail", class: "form-label" %>
+              <%= f.email_field :email, class: "form-control form-control-lg", placeholder: "Digite seu e-mail", required: true %>
+            </div>
+
+            <div class="mb-4">
+              <%= f.label :abilities, "Habilidades", class: "form-label" %>
+              <%= f.text_field :abilities, class: "form-control form-control-lg", placeholder: "Ex: Ruby, Rails, JavaScript (separadas por vírgula)" %>
+              <div class="form-text text-muted">
+                Separe suas habilidades por vírgula. Ex: Ruby, Rails, JavaScript
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <%= f.submit "Cadastrar", class: "btn btn-primary btn-lg" %>
+              <%= link_to "Voltar", root_path, class: "btn btn-outline-secondary btn-lg" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div>
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-</div>
-<div>
-    <%= form.label :abilities %>
-    <%= form.textarea :abilities %>
-</div>
-<div>
-    <%= form.submit %>
-</div>
-<% end %>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Círculo decorativo -->
+  <circle cx="25" cy="25" r="20" fill="#6C63FF" fill-opacity="0.1"/>
+  
+  <!-- Ícone estilizado de mentoria -->
+  <path d="M25 10C31.6274 10 37 15.3726 37 22C37 28.6274 31.6274 34 25 34C18.3726 34 13 28.6274 13 22C13 15.3726 18.3726 10 25 10ZM25 14C20.5817 14 17 17.5817 17 22C17 26.4183 20.5817 30 25 30C29.4183 30 33 26.4183 33 22C33 17.5817 29.4183 14 25 14Z" fill="#6C63FF"/>
+  
+  <!-- Texto "Mentora" -->
+  <text x="60" y="32" font-family="Arial" font-size="24" font-weight="bold" fill="#6C63FF">Mentora</text>
+</svg> 

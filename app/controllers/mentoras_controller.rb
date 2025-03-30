@@ -1,6 +1,6 @@
 class MentorasController < ApplicationController
   def index
-    @mentoras = Mentora.all
+    @mentoras = Mentora.all.order(created_at: :desc)
   end
 
   def new
@@ -8,14 +8,24 @@ class MentorasController < ApplicationController
   end
 
   def create
-    @mentora = Mentora.new(name: params[:mentora][:name], email: params[:mentora][:email], abilities: params[:mentora][:abilities])
+    @mentora = Mentora.new(mentora_params)
 
     if @mentora.save
-      redirect_to mentora_path(@mentora)
+      redirect_to @mentora, notice: "Mentora cadastrada com sucesso!"
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def show
     @mentora = Mentora.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "Mentora não encontrada"
+  end
+
+  private
+
+  def mentora_params
+    params.require(:mentora).permit(:name, :email, :abilities)
   end
 end

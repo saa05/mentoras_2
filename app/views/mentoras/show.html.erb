@@ -1,12 +1,40 @@
-<h1> mentora </h1>
-<div>
-    <p> Name = <%= @mentora.name %></p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body p-4 p-lg-5">
+          <div class="text-center mb-4">
+            <div class="rounded-circle bg-primary bg-opacity-10 p-4 d-inline-block mb-3">
+              <i class="bi bi-person text-primary display-4"></i>
+            </div>
+            <h1 class="display-5 text-primary mb-2"><%= @mentora.name %></h1>
+            <p class="lead text-muted mb-4"><%= @mentora.email %></p>
+
+            <% if @mentora.abilities.present? %>
+              <div class="mb-4">
+                <h5 class="text-muted mb-3">Habilidades</h5>
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                  <% @mentora.abilities.split(",").each do |ability| %>
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                      <%= ability.strip %>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+              <%= link_to root_path, class: "btn btn-outline-primary btn-lg px-4" do %>
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+              <% end %>
+              <%= link_to "mailto:#{@mentora.email}", class: "btn btn-primary btn-lg px-4" do %>
+                <i class="bi bi-envelope me-2"></i>Entrar em Contato
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div>
-    <p> Email = <%= @mentora.email %></p> 
-</div>
-<div>
-    <p> Habilidades = <%= @mentora.abilities %></p>
-</div>
-<%= link_to "voltar", mentoras_path %>
     
